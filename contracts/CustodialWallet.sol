@@ -25,10 +25,6 @@ contract CustodialWallet is Allowance {
         ownerOrAllowed(_amount)
     {
         require(
-            _to == msg.sender,
-            "You cannot alter the funds of addresses other than your own."
-        );
-        require(
             _amount <= address(this).balance,
             "Contract does not hold enough funds."
         );
