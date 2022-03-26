@@ -30,9 +30,10 @@ contract Allowance is Ownable {
         return owner() == msg.sender;
     }
 
-    /// @notice check to see if
+    /// @notice check to see if the owner is calling the function or if the other account has enough to withdraw
     /// @param _amount the amount we want to withdraw, we check to see if a user's allowance is >= than it
-    /// @dev the owner() is the person who deployed the contract. We can also implement renounceOwnership() or transferOwnership()
+    /// @dev the owner() is the person who deployed the contract. 
+    /// @dev usually this is used to make sure withdrawing to an account is a valid tx
     modifier ownerOrAllowed(uint256 _amount) {
         require(
             isOwner() || allowance[msg.sender] >= _amount,
